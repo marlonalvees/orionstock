@@ -1,17 +1,15 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3001",
 });
 
-// Injeta o token JWT em todas as requisições automaticamente
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-// Se o token expirar, redireciona para o login
 api.interceptors.response.use(
   (res) => res,
   (err) => {
@@ -24,12 +22,10 @@ api.interceptors.response.use(
   },
 );
 
-// ─── Auth ─────────────────────────────────────────────────────────────────────
+// auth
 
 export const login = (email, senha) =>
   api.post("/auth/login", { email, senha });
-// export const login = (email, senha) =>
-//   api.post("/login-teste", { email, senha });
 
 export function salvarSessao(token, usuario) {
   localStorage.setItem("token", token);
@@ -48,7 +44,7 @@ export function getSessao() {
   return { token, usuario: JSON.parse(usuario) };
 }
 
-// ─── Produtos ─────────────────────────────────────────────────────────────────
+// produtos
 
 export const getProdutos = () => api.get("/produtos");
 export const getProdutoById = (id) => api.get(`/produtos/${id}`);
@@ -57,7 +53,7 @@ export const atualizarProduto = (id, dados) =>
   api.put(`/produtos/${id}`, dados);
 export const deletarProduto = (id) => api.delete(`/produtos/${id}`);
 
-// ─── Helpers de status ────────────────────────────────────────────────────────
+//  status
 
 export function getStatus(produto) {
   const hoje = new Date().toISOString().slice(0, 10);
