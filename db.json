@@ -1,0 +1,68 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Antibiótico Amoxicilina",
+      "categoria": "Medicamento",
+      "quantidade": 3,
+      "validade": "2026-05-10",
+      "fornecedor": "Vet Pharma"
+    },
+    {
+      "id": 2,
+      "nome": "Ração Premium Adulto",
+      "categoria": "Ração",
+      "quantidade": 12,
+      "validade": "2026-12-01",
+      "fornecedor": "NutriPet"
+    },
+    {
+      "id": 3,
+      "nome": "Shampoo Antifúngico",
+      "categoria": "Higiene",
+      "quantidade": 2,
+      "validade": "2025-11-20",
+      "fornecedor": "DermVet"
+    },
+    {
+      "id": 4,
+      "nome": "Vacina V8",
+      "categoria": "Vacina",
+      "quantidade": 8,
+      "validade": "2026-04-18",
+      "fornecedor": "BioPet"
+    },
+    {
+      "id": 5,
+      "nome": "Soro Fisiológico 500ml",
+      "categoria": "Material",
+      "quantidade": 0,
+      "validade": "2027-03-15",
+      "fornecedor": "MedVet"
+    },
+    {
+      "id": 6,
+      "nome": "Ivermectina 1%",
+      "categoria": "Medicamento",
+      "quantidade": 15,
+      "validade": "2026-09-30",
+      "fornecedor": "Vet Pharma"
+    },
+    {
+      "id": 7,
+      "nome": "Ração Filhote",
+      "categoria": "Ração",
+      "quantidade": 4,
+      "validade": "2026-08-15",
+      "fornecedor": "NutriPet"
+    },
+    {
+      "id": 8,
+      "nome": "Luva Descartável (cx 100)",
+      "categoria": "Material",
+      "quantidade": 6,
+      "validade": "2028-01-01",
+      "fornecedor": "MedVet"
+    }
+  ]
+}
