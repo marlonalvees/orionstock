@@ -4,39 +4,7 @@ Projeto acadêmico (PEX) com React + Node.js + SQLite e autenticação por login
 
 ---
 
-## 📁 Estrutura do projeto
 
-```
-vetstock/
-├── backend/                 ← Servidor Node.js
-│   ├── server.js            ← Ponto de entrada do servidor
-│   ├── db.js                ← Banco de dados SQLite
-│   ├── .env                 ← Configurações (email/senha admin, chave JWT)
-│   ├── .env.example         ← Modelo do .env
-│   ├── middleware/
-│   │   └── autenticar.js    ← Proteção de rotas via JWT
-│   └── routes/
-│       ├── auth.js          ← POST /auth/login, GET /auth/me
-│       └── produtos.js      ← CRUD completo de produtos
-└── src/                     ← Aplicação React
-    ├── App.jsx              ← Rotas (com proteção de login)
-    ├── index.css            ← Estilos globais + dark mode
-    ├── services/
-    │   └── api.js           ← Chamadas HTTP + gerenciamento de sessão
-    ├── components/
-    │   ├── Sidebar.jsx      ← Menu + botão sair + modo escuro
-    │   ├── RotaProtegida.jsx← Redireciona para login se não autenticado
-    │   ├── FormProduto.jsx  ← Formulário reutilizável
-    │   └── StatusBadge.jsx  ← Badge de status do produto
-    └── pages/
-        ├── Login.jsx        ← Tela de login
-        ├── Dashboard.jsx    ← Indicadores e alertas
-        ├── Produtos.jsx     ← Lista com busca e filtros
-        ├── Cadastro.jsx     ← Cadastro de produto
-        └── Editar.jsx       ← Edição de produto
-```
-
----
 
 ## ⚙️ Como instalar e rodar
 
@@ -137,43 +105,4 @@ Rotas da API:
 
 ---
 
-## 🌐 Como hospedar online
 
-### Front-end → Vercel (gratuito)
-
-1. Crie conta em vercel.com
-2. Suba a pasta vetstock (sem a pasta backend) no GitHub
-3. Conecte o repositório na Vercel
-4. Ela detecta o Vite automaticamente e faz o deploy
-
-Atenção: antes do deploy, altere a baseURL no arquivo src/services/api.js
-para apontar para o endereço real do seu backend hospedado.
-
-### Backend → Railway (gratuito com limitações)
-
-1. Crie conta em railway.app
-2. Crie um novo projeto e suba apenas a pasta backend no GitHub
-3. Configure as variáveis de ambiente no painel do Railway:
-   JWT_SECRET, ADMIN_EMAIL, ADMIN_SENHA, PORT
-4. Railway detecta o Node.js e inicia com: node server.js
-
----
-
-## 💡 Dicas para a apresentação
-
-- Mostre a tela de login e explique o fluxo de autenticação
-- Abra o DevTools (F12 → Network) e mostre o token JWT sendo enviado
-  nos headers de cada requisição
-- Mostre o arquivo backend/vetstock.db.bin sendo criado/atualizado
-- Acesse http://localhost:3001/produtos sem token para mostrar o 401
-- Demonstre o modo escuro e o menu mobile
-
----
-
-## 🚀 Melhorias futuras sugeridas
-
-- Múltiplos usuários com diferentes níveis de acesso
-- Histórico de movimentações (entradas e saídas)
-- Relatório em PDF do estoque
-- Notificações por e-mail para produtos vencendo
-- Deploy completo na nuvem
