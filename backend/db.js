@@ -7,7 +7,7 @@ async function iniciarDB() {
   const adminSenha = process.env.ADMIN_SENHA;
 
   try {
-    const { data: usuarioExistente, error: erroBusca } = await supabase
+    const { data: usuarioExistente } = await supabase
       .from("usuarios")
       .select("id")
       .eq("email", adminEmail)
