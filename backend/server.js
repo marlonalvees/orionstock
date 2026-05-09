@@ -21,10 +21,8 @@ app.post("/login-teste", (req, res) => {
 });
 app.use("/produtos", produtosRoutes);
 
-// Health check
 app.get("/", (_, res) => res.json({ status: "VetStock API rodando ✓" }));
 
-// Inicia o banco e depois sobe o servidor
 iniciarDB()
   .then(() => {
     app.listen(PORT, () => {
