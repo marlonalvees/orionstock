@@ -13,7 +13,6 @@ const DB_PATH = path.join(__dirname, "vetstock.db.bin");
 
 let db = null;
 
-// Salva o banco no disco (sql.js é in-memory, então salvamos manualmente)
 function salvarDisco() {
   const data = db.export();
   fs.writeFileSync(DB_PATH, Buffer.from(data));
@@ -23,15 +22,12 @@ async function iniciarDB() {
   const SQL = await initSqlJs();
 
   if (fs.existsSync(DB_PATH)) {
-    // Carrega banco existente do disco
     const fileBuffer = fs.readFileSync(DB_PATH);
     db = new SQL.Database(fileBuffer);
   } else {
-    // Cria banco novo
     db = new SQL.Database();
   }
 
-  // Cria tabelas se não existirem
   db.run(`
     CREATE TABLE IF NOT EXISTS usuarios (
       id      INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,7 +48,6 @@ async function iniciarDB() {
     )
   `);
 
-  // Cria admin se não existir
   const adminEmail = process.env.ADMIN_EMAIL || "admin@clinica.com";
   const adminSenha = process.env.ADMIN_SENHA || "admin123";
 
@@ -69,7 +64,6 @@ async function iniciarDB() {
     console.log(`✓ Admin criado: ${adminEmail} / senha: ${adminSenha}`);
   }
 
-  // Insere produtos de exemplo se o banco estiver vazio
   const prods = db.exec("SELECT COUNT(*) as total FROM produtos");
   const total = prods[0].values[0][0];
   if (total === 0) {
